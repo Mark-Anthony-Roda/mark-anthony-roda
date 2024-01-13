@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} bg-[#191919] relative`}>
+      <body className={`${montserrat.className}`}>
         <DefaultLayout>{children}</DefaultLayout>
       </body>
     </html>

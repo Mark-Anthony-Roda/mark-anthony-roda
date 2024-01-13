@@ -1,13 +1,20 @@
+"use client";
 import AboutMe from "@/components/sections/AboutMe";
 import HeroBanner from "@/components/sections/HeroBanner";
-import Image from "next/image";
-import { Fragment } from "react";
+import MyExperienceEducation from "@/components/sections/MyExperienceEducation";
+import MySkills from "@/components/sections/MySkills";
 export default function Home() {
   return (
-    <Fragment>
+    <div className="pb-[75px] md:pb-6 flex flex-col gap-6">
       <HeroBanner />
 
-      <AboutMe />
-    </Fragment>
+      <div className="flex flex-col gap-24">
+        <AboutMe />
+
+        <MySkills />
+
+        <MyExperienceEducation />
+      </div>
+    </div>
   );
 }

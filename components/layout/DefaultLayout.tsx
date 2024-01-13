@@ -1,36 +1,46 @@
 "use client";
-import { Fragment, ReactNode } from "react";
-import Button from "../core/Button";
-import { useRouter } from "next/navigation";
+import { ReactNode, useEffect } from "react";
 import useNavigation from "@/lib/store/sectionNavigationStore";
-import { GiWaterDrop } from "react-icons/gi";
 import { useShallow } from "zustand/react/shallow";
+import FloatingMenu from "./FloatingMenu";
+import HeaderMenu from "./HeadingMenu";
+import useTheme from "@/lib/store/themeStore";
 
 export default function DefaultLayout({ children }: { children: ReactNode }) {
-  const router = useRouter();
-  const { section, sections } = useNavigation(
+  const { navigations, handleScroll } = useNavigation(
     useShallow((state) => ({
-      section: state.sectionId,
-      sections: state.sections,
+      navigations: state.navigations,
+      handleScroll: state.handleScroll,
     }))
   );
+
+  const { theme, classTheme } = useTheme(
+    useShallow((state) => ({
+      theme: state.theme,
+      classTheme: state.class,
+    }))
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
   return (
-    <Fragment>
-      <main className="container mx-auto ">{children}</main>;
-      <div className="fixed bottom-5 animate-bounce w-full flex justify-center">
-        <Button
-          onClick={() => {
-            useNavigation.setState({ sectionId: section + 1 });
-            router.push(`/#${sections[section + 1]}`);
-          }}
-          className="relative px-5 py-3 w-fit bg-[#043382] text-sm sm:text-base text-white rounded-full"
-        >
-          <p className="z-50">{sections[section + 1]}</p>
-          <div className="text-[#043382] rotate-180 absolute top-7 left-1/2 z-0">
-            <GiWaterDrop size={32} />
-          </div>
-        </Button>
-      </div>
-    </Fragment>
+    <div
+      className={`relative flex`}
+      style={{
+        backgroundColor: classTheme[theme]?.pageBackground,
+      }}
+    >
+      <FloatingMenu
+        items={navigations}
+        className="hidden md:flex fixed h-screen max-h-screen p-6 flex-col gap-6 justify-center z-50"
+      />
+      <HeaderMenu items={navigations} />
+      <main className="container mx-auto">{children}</main>;
+    </div>
   );
 }
