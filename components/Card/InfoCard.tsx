@@ -10,7 +10,7 @@ export default function InfoCard({
       <p className="text-5xl font-semibold text-[#043382]">{heading}</p>
       <div className="flex gap-4 items-center">
         <hr className="border w-8" />
-        <span className="uppercase text-lg tracking-[2px] font-medium">
+        <span className="uppercase text-md md:text-lg tracking-[2px] font-medium">
           {description}
         </span>
       </div>

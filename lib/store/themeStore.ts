@@ -8,15 +8,15 @@ const useTheme = create<{
   class: {
     dark: {
       pageBackground: "#191919",
-      textColor: "text-white",
-      textHightlight: "text-[#043382]",
-      primaryBackground: "bg-[#043382]",
+      textColor: "white",
+      textHightlight: "#043382",
+      primaryBackground: "#043382",
     },
     light: {
       pageBackground: "white",
-      textColor: "text-[#191919]",
-      textHightlight: "text-[#043382]",
-      primaryBackground: "bg-[#043382]",
+      textColor: "#191919",
+      textHightlight: "#043382",
+      primaryBackground: "#043382",
     },
   },
   toggleTheme: () => {

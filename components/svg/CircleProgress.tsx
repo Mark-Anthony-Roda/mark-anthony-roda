@@ -15,17 +15,18 @@ export default function CircleProgress({
       version="1.1"
       width={size}
       height={size}
+      className="w-[100px] h-[100px]"
     >
       <circle
-        cx={80}
-        cy={80}
-        r={70}
+        cx='50%'
+        cy='50%'
+        r='45%'
         strokeLinecap="round"
         stroke={stroke}
-        strokeDasharray={450}
-        strokeDashoffset={450 * percentageToColor}
+        strokeDasharray={270}
+        strokeDashoffset={270 * percentageToColor}
         fill="none"
-        strokeWidth={20}
+        strokeWidth={10}
       />
     </svg>
   );
