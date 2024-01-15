@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Button from "../core/Button";
 import profilePicture from "@/public/images/profile/profile.webp";
 import { TypeAnimation } from "react-type-animation";
 import { IoMdDownload } from "react-icons/io";
@@ -56,10 +55,14 @@ export default function HeroBanner() {
               me to contribute effectively to full-stack development projects.
             </p>
 
-            <Button>
+            <a
+              href={"/resume/Mark-Roda-Resume.pdf"}
+              download={"mark-roda-resume"}
+              className="bg-[#043382] font-bold text-white py-2 px-6 md:w-fit rounded-full hover:bg-[#042B6B] flex gap-4 justify-center items-center"
+            >
               <p>Download Resume</p>
               <IoMdDownload />
-            </Button>
+            </a>
           </div>
           <motion.div
             initial={{ scale: 0 }}

@@ -63,7 +63,7 @@ export default function AboutMe() {
       className="w-full flex flex-col gap-6 justify-center items-center"
     >
       <h2
-        className={`text-xl md:text-4xl font-bold tracking-[3px] uppercase`}
+        className={`text-xl md:text-4xl font-bold tracking-[3px] uppercase text-center`}
         style={{ color: classTheme[theme].textColor }}
       >
         About{" "}

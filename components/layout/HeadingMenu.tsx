@@ -44,8 +44,8 @@ export default function HeaderMenu({
         return (
           <div
             key={index}
-            data-tooltip-id={`tooltip-${index}`}
-            data-tooltip-content={item.name}
+            // data-tooltip-id={`tooltip-${index}`}
+            // data-tooltip-content={item.name}
           >
             <Button
               onClick={() => scrollToElement(item.id)}
@@ -53,13 +53,13 @@ export default function HeaderMenu({
             >
               {createElement(item.icon, { size: "20" })}
             </Button>
-            <Tooltip id={`tooltip-${index}`} place="top" />
+            {/* <Tooltip id={`tooltip-${index}`} place="top" /> */}
           </div>
         );
       })}
       <div
-        data-tooltip-id={`theme`}
-        data-tooltip-content={theme === "dark" ? `Light mode` : `Dark mode`}
+      // data-tooltip-id={`theme`}
+      // data-tooltip-content={theme === "dark" ? `Light mode` : `Dark mode`}
       >
         <Button
           onClick={toggleTheme}
@@ -71,7 +71,7 @@ export default function HeaderMenu({
             size: "20",
           })}
         </Button>
-        <Tooltip id={`theme`} place="right" />
+        {/* <Tooltip id={`theme`} place="right" /> */}
       </div>
     </div>
   );

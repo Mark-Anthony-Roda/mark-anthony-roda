@@ -75,7 +75,7 @@ export default function MySkills() {
     >
       <h2
         id="about-me"
-        className={`text-xl md:text-4xl font-bold tracking-[3px] uppercase`}
+        className={`text-xl md:text-4xl font-bold tracking-[3px] uppercase text-center`}
         style={{ color: classTheme[theme].textColor }}
       >
         My{" "}

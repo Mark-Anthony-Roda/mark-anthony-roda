@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { GiMeepleGroup, GiSkills } from "react-icons/gi";
 import { ImProfile } from "react-icons/im";
+import { IoMdMailOpen } from "react-icons/io";
 import { MdPerson4 } from "react-icons/md";
 import { create } from "zustand";
 const useNavigation = create<{
@@ -34,6 +35,11 @@ const useNavigation = create<{
       name: "Experience",
       icon: GiMeepleGroup,
       id: "experience",
+    },
+    {
+      name: "Socials",
+      icon: IoMdMailOpen,
+      id: "socials",
     },
   ],
   activeHandler: (to: string) => {

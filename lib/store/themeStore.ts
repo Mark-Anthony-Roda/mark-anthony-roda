@@ -3,6 +3,7 @@ const useTheme = create<{
   theme: "dark" | "light";
   class: { [key: string]: { [key: string]: string } };
   toggleTheme: () => void;
+  getInitialTheme: () => void;
 }>((set, get) => ({
   theme: "dark",
   class: {
@@ -24,9 +25,16 @@ const useTheme = create<{
 
     if (currentTheme === "dark") {
       set({ theme: "light" });
+      localStorage.setItem("theme", "light");
     } else {
       set({ theme: "dark" });
+      localStorage.setItem("theme", "dark");
     }
+  },
+  getInitialTheme: () => {
+    const theme: any = localStorage.getItem("theme") ?? "dark";
+
+    if (theme) set({ theme: theme });
   },
 }));
 

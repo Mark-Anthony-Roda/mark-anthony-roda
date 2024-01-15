@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import useNavigation from "@/lib/store/sectionNavigationStore";
 import { useShallow } from "zustand/react/shallow";
 import FloatingMenu from "./FloatingMenu";
@@ -7,6 +7,8 @@ import HeaderMenu from "./HeadingMenu";
 import useTheme from "@/lib/store/themeStore";
 
 export default function DefaultLayout({ children }: { children: ReactNode }) {
+  const observer = useRef<IntersectionObserver | null>(null);
+
   const { navigations, handleScroll } = useNavigation(
     useShallow((state) => ({
       navigations: state.navigations,
@@ -14,19 +16,41 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
     }))
   );
 
-  const { theme, classTheme } = useTheme(
+  const { theme, classTheme, getInitialTheme } = useTheme(
     useShallow((state) => ({
       theme: state.theme,
       classTheme: state.class,
+      getInitialTheme: state.getInitialTheme,
     }))
   );
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    getInitialTheme();
+  }, [getInitialTheme]);
+
+  useEffect(() => {
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            useNavigation.setState({ active: entry.target.id });
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    navigations.forEach((section) => {
+      const target = document.getElementById(section.id);
+      if (target) {
+        observer.current?.observe(target);
+      }
+    });
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      observer.current?.disconnect();
     };
-  }, [handleScroll]);
+  }, [navigations]);
 
   return (
     <div
