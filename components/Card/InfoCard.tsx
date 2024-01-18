@@ -1,10 +1,9 @@
+import { InfoCardProps } from "@/interfaces/card/infoCard";
+
 export default function InfoCard({
   heading,
   description,
-}: {
-  heading: string;
-  description: string;
-}) {
+}: InfoCardProps) {
   return (
     <div className="rounded-lg p-4 border flex flex-col">
       <p className="text-5xl font-semibold text-[#043382]">{heading}</p>

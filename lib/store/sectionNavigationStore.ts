@@ -1,19 +1,10 @@
-import { FunctionComponent } from "react";
+import { SectionNavigationProps } from "@/interfaces/store/sectionNavigation";
 import { GiMeepleGroup, GiSkills } from "react-icons/gi";
 import { ImProfile } from "react-icons/im";
 import { IoMdMailOpen } from "react-icons/io";
 import { MdPerson4 } from "react-icons/md";
 import { create } from "zustand";
-const useNavigation = create<{
-  active: string | null;
-  navigations: Array<{
-    name: string;
-    icon: FunctionComponent<{ size: string }>;
-    id: string;
-  }>;
-  scrollToElement: (to: string) => void;
-  handleScroll: () => void;
-}>((set, get) => ({
+const useNavigation = create<SectionNavigationProps>((set, get) => ({
   active: null,
   navigations: [
     {

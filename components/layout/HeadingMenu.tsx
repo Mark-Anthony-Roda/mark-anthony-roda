@@ -1,22 +1,15 @@
-import { FunctionComponent, createElement } from "react";
-import { Tooltip } from "react-tooltip";
+import { createElement } from "react";
 import Button from "../core/Button";
 import { IoMoonSharp, IoSunnySharp } from "react-icons/io5";
 import useNavigation from "@/lib/store/sectionNavigationStore";
 import { useShallow } from "zustand/react/shallow";
 import useTheme from "@/lib/store/themeStore";
+import { MenuProps } from "@/interfaces/layout/headerMenus";
 
 export default function HeaderMenu({
   items,
   className = "fixed bottom-0 flex md:hidden justify-between bg-[#043382] p-3 z-50 w-full shadow-md",
-}: {
-  items: Array<{
-    name: string;
-    icon: FunctionComponent<{ size: string }>;
-    id: string;
-  }>;
-  className?: string;
-}) {
+}: MenuProps) {
   const { active, scrollToElement } = useNavigation(
     useShallow((state) => ({
       active: state.active,
@@ -42,25 +35,17 @@ export default function HeaderMenu({
             : "bg-[#043382]";
 
         return (
-          <div
-            key={index}
-            // data-tooltip-id={`tooltip-${index}`}
-            // data-tooltip-content={item.name}
-          >
+          <div key={index}>
             <Button
               onClick={() => scrollToElement(item.id)}
               className={`${activeClass} cursor-pointer font-bold text-white p-3 md:w-fit rounded-full hover:bg-[#042B6B] flex gap-4 justify-center items-center`}
             >
               {createElement(item.icon, { size: "20" })}
             </Button>
-            {/* <Tooltip id={`tooltip-${index}`} place="top" /> */}
           </div>
         );
       })}
-      <div
-      // data-tooltip-id={`theme`}
-      // data-tooltip-content={theme === "dark" ? `Light mode` : `Dark mode`}
-      >
+      <div>
         <Button
           onClick={toggleTheme}
           className={`font-bold ${
@@ -71,7 +56,6 @@ export default function HeaderMenu({
             size: "20",
           })}
         </Button>
-        {/* <Tooltip id={`theme`} place="right" /> */}
       </div>
     </div>
   );

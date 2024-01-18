@@ -1,3 +1,4 @@
+import { CircleProgressChartProps } from "@/interfaces/chart/circleProgressChart";
 import CircleProgress from "../svg/CircleProgress";
 
 export default function CircleProgressChart({
@@ -9,16 +10,7 @@ export default function CircleProgressChart({
   valueClass = "text-2xl font-semibold text-white",
   theme,
   style,
-}: {
-  value: number;
-  name: string;
-  wrapperClass?: string;
-  outerClass?: string;
-  innerClass?: string;
-  valueClass?: string;
-  theme: { [key: string]: string };
-  style: { [key: string]: string };
-}) {
+}: CircleProgressChartProps) {
   return (
     <div className={wrapperClass}>
       <div className={outerClass}>

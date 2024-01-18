@@ -1,10 +1,6 @@
+import { ThemeProps } from "@/interfaces/store/theme";
 import { create } from "zustand";
-const useTheme = create<{
-  theme: "dark" | "light";
-  class: { [key: string]: { [key: string]: string } };
-  toggleTheme: () => void;
-  getInitialTheme: () => void;
-}>((set, get) => ({
+const useTheme = create<ThemeProps>((set, get) => ({
   theme: "dark",
   class: {
     dark: {

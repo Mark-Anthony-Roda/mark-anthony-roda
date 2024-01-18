@@ -1,22 +1,16 @@
-import { FunctionComponent, createElement } from "react";
+import { createElement } from "react";
 import { IoMoonSharp, IoSunnySharp } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
 import Button from "../core/Button";
 import useNavigation from "@/lib/store/sectionNavigationStore";
 import { useShallow } from "zustand/react/shallow";
 import useTheme from "@/lib/store/themeStore";
+import { MenuProps } from "@/interfaces/layout/headerMenus";
 
 export default function FloatingMenu({
   items,
   className = "md:flex fixed h-screen max-h-screen p-6 flex-col gap-6 justify-center z-50",
-}: {
-  items: Array<{
-    name: string;
-    icon: FunctionComponent<{ size: string }>;
-    id: string;
-  }>;
-  className?: string;
-}) {
+}: MenuProps) {
   const { active, scrollToElement } = useNavigation(
     useShallow((state) => ({
       active: state.active,
