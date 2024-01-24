@@ -30,7 +30,7 @@ const personalInfo = [
   },
   {
     label: "Language :",
-    value: "English, Tagalog, Bisaya",
+    value: "English, Filipino, Cebuano",
   },
 ];
 
