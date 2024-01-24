@@ -47,7 +47,7 @@ export default function Socials() {
             className="text-xs"
             style={{ color: classTheme[theme]?.textColor }}
           >
-            09558543435
+            +639558543435
           </p>
         </div>
       </div>
