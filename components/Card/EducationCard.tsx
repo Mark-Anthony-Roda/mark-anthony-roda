@@ -17,7 +17,7 @@ export default function EducationCard({
         <div className="border w-[1px] h-[90%]" />
       </div>
       <div className="flex flex-col gap-4" style={{ color: textColor }}>
-        <p className="px-4 py-1 text-sm rounded-full bg-[#043382] font-medium tracking-[1px] w-fit">
+        <p className="px-4 py-1 text-sm text-white rounded-full bg-[#043382] font-medium tracking-[1px] w-fit">
           {year}
         </p>
         <div className="flex gap-2 text-xs">

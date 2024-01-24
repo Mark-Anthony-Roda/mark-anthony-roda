@@ -29,7 +29,6 @@ export default function MyExperienceEducation() {
           experience/education
         </span>
       </h2>
-
       <div className="flex flex-col w-full text-[#043382] gap-4 px-8 sm:px-18 md:px-24 lg:px-32">
         {experiences.map((item, index) => (
           <ExperienceCard
