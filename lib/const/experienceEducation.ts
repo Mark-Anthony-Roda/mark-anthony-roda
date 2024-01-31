@@ -1,13 +1,13 @@
 const experiences = [
   {
-    year: "2021 - present",
+    year: "Aug 2021 - Jan 2024",
     company: "Halcyon Agyle",
     position: "Software Developer",
     description:
       "Collaborated with a team of talented programmers, contributing to the development and enhancement of innovative software solutions.",
   },
   {
-    year: "Sep 2020 - Dec 2020",
+    year: "Jun 2020 - Dec 2020",
     company: "Cerenimbus Inc.",
     position: "Software Developer Intern (WFH)",
     description:
